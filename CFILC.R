@@ -216,10 +216,10 @@ scr_thr <- function(msarr) {
       }
       
       lzdf = lzdf[order(lzdf[,3]), ]
-      lzdfp = data.frame(lzc = c(lzdf[26:30, 1],lzdf[26:30, 2]), lzf = c(rep("kl", 5), rep("al", 5)), zl = lzdf[26:30,4])
+      lzdfp = data.frame(lzc = c(lzdf[nrow(ms2_sdf)-4:nrow(ms2_sdf), 1],lzdf[nrow(ms2_sdf)-4:nrow(ms2_sdf), 2]), lzf = c(rep("kl", 5), rep("al", 5)), zl = lzdf[nrow(ms2_sdf)-4:nrow(ms2_sdf),4])
       fn = paste(wz,".jpeg",sep = "")
       jpeg(fn)
-      p = ggplot(data = lzdfp, mapping = aes(x = factor(zl,levels = as.factor(lzdf[26:30, 4])), y = lzc, fill = lzf))  + 
+      p = ggplot(data = lzdfp, mapping = aes(x = factor(zl,levels = as.factor(lzdf[nrow(ms2_sdf)-4:nrow(ms2_sdf), 4])), y = lzc, fill = lzf))  + 
         geom_bar(stat="identity", position = "dodge") + labs(x = "wz", y = "jac", fill = "lz") + theme_bw() +
         theme(axis.text.x = element_text(angle=25, size = 10, vjust = 0.6))
       print(p)
